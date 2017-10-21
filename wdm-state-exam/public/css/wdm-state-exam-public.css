@@ -1,0 +1,219 @@
+
+.wdm_state_exam, .wdm_prepare_state_exam {
+    display: inline-block;
+    background-color: #D8D8D8;
+    width: 49%;
+    border-radius: 10px;
+}
+
+
+.wdm_state_exam h2.wdm_title,.wdm_state_exam p{
+    margin-top: 5%;
+    margin-left: 5%;
+/*text-align: center;*/
+}
+
+.wdm_state_exam h3{
+    margin: 0;
+}
+.wdm_state_exam .wdm-image{
+    width:100%;
+    height: 30%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.wdm_state_exam h2.wdm_title,.wdm_prepare_state_exam h2.wdm_title {
+    color:black;
+}
+
+.wdm_prepare_state_exam h2.wdm_title{
+    margin-bottom: 0;
+    line-height: 41px !important;
+    margin-left: 5%;
+}
+
+.wdm_state_exam a, .wdm_prepare_state_exam a{
+    font-size: 15px;
+    color: white;
+    background: #444444;
+    padding: 5px 21px;
+    border-radius: 5px;
+}
+
+
+.wdm_prepare_image{
+    width: 40%;
+    margin: 5%;
+    display: inline-block;
+}
+
+.wdm_prepare_data{
+    width: 40%;
+    margin: 5%;
+    display: inline-block;
+    float: right;
+}
+
+.page-template-category-quiz-template #main, .page-template-wisdmlabs-page-template #main{
+    background: #2e2e2e;
+    padding: 0 !important;
+    min-height: 670px;
+}
+
+.bp-sensei-msg-link.wdm-sensei-msg-link{
+    display: inline !important;
+}
+
+.entry-content-page .wdm_reveal_answer a.answers-button{
+    background: green !important;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.entry-content-page .wdm_hide_answer a.answers-button{
+    background: red !important;
+    line-height: 30px;
+        cursor: pointer;
+}
+
+.wdm_timer{
+    position: fixed;
+    right: 2%;
+    top: 6%;
+}
+
+.wdm_hide{
+    display: none !important;
+}
+
+.wdm-table{
+    width:100%;
+}
+
+.wdm-table td{
+    /*padding: 8px;*/
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+.wdm-table h3{
+    margin:0px;
+}
+
+.wdm-category-table{
+    width:50%;
+}
+
+.wdm-logs-table{
+    width:100%;
+}
+
+.wdm-logs-table td, .wdm-category-table td{
+padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+.wdm-sensei-msg-link{
+    margin-left:2%;
+}
+
+.wdm_open{
+    margin-top: 25% !important;
+}
+
+#wdm-back-to-lesson > a.button{
+    background-color: #2e2e2e !important;
+    font-size: 17px !important;
+    text-transform: none !important;
+    font-weight: normal !important;
+    padding: 1px 15px !important;
+    color: #fff !important;
+    border-radius: 5px !important;
+    margin-top:2%;
+}
+
+.wdm-private-msg{
+    margin-left: 2%;
+}
+
+.wdm-contact-teacher{
+    font-size: 18px !Important;
+    color: #444 !important;
+    font-weight: 500 !Important;
+    width: 100%;
+    height: 4em;
+}
+
+h2#wdm_additional_resources{
+    margin-top:0% !important;
+}
+
+td.wdm_pass{
+    color:green;
+    font-weight:bold;
+}
+td.wdm_fail{
+    color:red;
+    font-weight:bold;
+}
+
+table.scroll {
+    width: 716px; /* 140px * 5 column + 16px scrollbar width */
+    border-spacing: 0;
+   /* border: 2px solid black;*/
+}
+
+table.scroll tbody,
+table.scroll thead tr { display: block; }
+
+table.scroll tbody {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+table.scroll tbody td,
+table.scroll thead th {
+    width: 140px;
+    /*border-right: 1px solid black;*/
+}
+
+table.scroll thead th:last-child {
+    width: 156px; /* 140px + 16px scrollbar width*/
+}
+
+thead tr th {
+    height: 30px;
+    line-height: 30px;
+    /*text-align: left;*/
+}
+
+
+table.scroll thead th{
+    font-weight: bold;
+}
+
+@media screen and (max-width: 610px) {
+    .wdm_state_exam, .wdm_prepare_state_exam {
+    width: 100%;
+    margin-top: 2%;
+}
+}
+
+@media screen and (max-width:710px){
+    table.scroll {
+    width: 100%;
+}
+.wdm-category-table{
+    width:100%;
+}
+}
+
+@media screen and (max-width: 900px) {
+ #nav_menu-2{
+        display: none;
+    }
+}

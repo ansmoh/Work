@@ -1,0 +1,28 @@
+.sensei-options-panel .options_group .wdm_timer_class.form-field.hidden {
+    display: none !important;
+  /*  margin: 0 0 0 0 !important;*/
+}
+
+.sensei-options-panel .options_group .wdm_timer_class.form-field {
+    display: inline !important;
+    margin: 0 0 0 0 !important;
+}
+
+
+.wdm_accessible_after.form-field input[type="number"]{
+    width: 20%;
+}
+
+.wdm_timer_class.form-field input[type="number"] {
+    width: 12%;
+}
+
+
+.wdm_quiz_hour.label{
+    display: inline;
+    margin: 0 0 0 0px;
+    width: 0%;
+}
+.sensei-options-panel .options_group .wdm_quiz_hour .label{
+    margin : 0 0 0 0 !important;
+}

@@ -1,0 +1,54 @@
+.lesson ul.products li{float:left;margin:0 3.8% 2.992em 0;padding:0;position:relative;width:27.05%;}
+div.wdm_video_link{clear:both;margin-top:1%;border-radius:5px;}
+div.wdm_video_link a{background:green !important;}
+div.wdm_lesson{margin-top:-6% !important;}
+.wdm_video_product a img{width:100%;}
+.wdm_video{position:relative;margin-top:12%;}
+.overlay{height:100%;width:100%;position:absolute;z-index:30;left:0;top:0;background-color:rgba(0, 0, 0, 0.6);overflow-x:hidden;}
+.overlay-content{position:relative;top:25%;width:100%;text-align:center;margin-top:30px;}
+.overlay a{padding:8px;text-decoration:none;font-size:20px;color:#C0C0C0;display:block;}
+.overlay a:hover,
+.overlay a:focus{color:#FFFFFF;}
+span.ginput_price{opacity:1;color:green;}
+.wdm_video_products li.product{display:inline-flex;width:100%;}
+.wdm_video_link.wdm_dashboard{top:18%;border-radius:5px;position:absolute;left:79%;}
+.wdm_purchase_video{padding:2%;color:#777;}
+.wdm_purchase_video:hover{color:#444;}
+div.wdm_dashboard_videos{margin-top:-6%;border-radius:5px;background:green;float:right;padding:1%;margin-right:1%;}
+div.wdm_dashboard_videos a{color:#FFF;}
+li.payinfo{width:50% !important;float:right !important;}
+div.video iframe{width:100%;}
+.pwrap{position:inherit !important;}
+.upsells.products{clear:both !important;}
+.upsells.products li,
+.wdm_ind_video_check li,
+.wdm_hardcopy li{width:100% !important;}
+.single_add_to_cart_button{display:table-row !important;}
+li.wdm_video_check,
+li.wdm_video_check .gfield_checkbox li{width:100% !important;}
+#wrapper .entry-summary .gform_wrapper ul li.wdm_ind_video_check{clear:both !important;width:30%;}
+li.wdm_video_check .gfield_checkbox li #choice_6_1{margin-left:0 !important;margin-top:0 !important;}
+li.wdm_video_check .gfield_label,
+li.wdm_ind_video_check .gfield_label{display:none !important;}
+#field_6_6{clear:both;}
+#label_36_1 .ginput_price,
+#label_6_1 .ginput_price,
+#label_9_1 .ginput_price,
+#label_2_1 .ginput_price{display:none !important;}
+.wdm_ginput_price{float:right;margin-top:-6% !important;margin-right:60%;}
+#gform_fields_6 .wdm_neg_price,
+#gform_fields_2 .wdm_neg_price{margin-top:auto;padding-left:8px;line-height:14px;}
+#label_6_1,
+#label_36_1,
+#label_9_1{line-height:14px;}
+#choice_6_1,
+#choice_9_1{}
+#gform_fields_11 li.payinfo{margin-top:-12%;}
+.wdm_payment{margin-top:-6% !important;}
+.shop_table .variation dt.variation-AddCourseVideos{display:none;}
+.cart .product_totals{height:60px;margin-bottom:2%;}
+#gform_wrapper_2 li.wdm_payinfo{margin-top:0px;}
+ul#gform_fields_6 #field_6_2{width:30%;}
+#gform_11{margin-top:19px;}
+@-moz-document url-prefix(){.cart .product_totals{margin-bottom:10%;}
+}
