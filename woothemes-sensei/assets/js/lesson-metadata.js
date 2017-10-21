@@ -144,18 +144,6 @@ jQuery(document).ready( function($) {
 
 		}
 
-		// Disable/enable field based on question types
-		if( disableAuto ) {
-			jQuery( 'input#quiz_grade_type' ).prop( 'checked', false );
-			jQuery( 'input#quiz_grade_type' ).attr( 'disabled', 'disabled' );
-			jQuery( 'input#quiz_grade_type' ).closest('p.form-field').addClass( 'disabled' );
-			jQuery( 'input#quiz_grade_type_disabled' ).val( 'disabled' );
-		} else {
-			jQuery( 'input#quiz_grade_type' ).removeAttr( 'disabled' );
-			jQuery( 'input#quiz_grade_type' ).closest('p.form-field').removeClass( 'disabled' );
-			jQuery( 'input#quiz_grade_type_disabled' ).val( 'enabled' );
-		}
-
 		// Save quiz grade type
 		jQuery.fn.saveQuizGradeType();
  	}
@@ -199,10 +187,8 @@ jQuery(document).ready( function($) {
  	jQuery.fn.saveQuizGradeType = function() {
 
  		var quiz_grade_type = jQuery( 'input#quiz_grade_type' ).is( ':checked' ) ? 'auto' : 'manual';
- 		var quiz_grade_type_disabled = jQuery( 'input#quiz_grade_type_disabled' ).val();
 
  		var dataToPost = 'quiz_grade_type' + '=' + quiz_grade_type;
- 		dataToPost += '&quiz_grade_type_disabled' + '=' + quiz_grade_type_disabled;
  		dataToPost += '&quiz_id' + '=' + jQuery( '#quiz_id' ).attr( 'value' );
 
  		jQuery.post(
@@ -241,7 +227,7 @@ jQuery(document).ready( function($) {
  	}
 
  	/**
- 	 * Save rnadom question order for quiz
+ 	 * Save random question order for quiz
  	 *
  	 * @since 1.5.0
  	 * access public
@@ -559,26 +545,26 @@ jQuery(document).ready( function($) {
 	 ***************************************************************************************************/
 
 	// Lessons Write Panel
-	if ( jQuery( '#lesson-complexity-options' ).exists() ) { jQuery( '#lesson-complexity-options' ).chosen(); }
-	if ( jQuery( '#lesson-prerequisite-options' ).exists() ) { jQuery( '#lesson-prerequisite-options' ).chosen(); }
-	if ( jQuery( '#lesson-course-options' ).exists() ) { jQuery( '#lesson-course-options' ).chosen(); }
-	if ( jQuery( '#course-prerequisite-options' ).exists() ) { jQuery( '#course-prerequisite-options' ).chosen(); }
-	if ( jQuery( '#lesson-course-details #course-category-options' ).exists() ) { jQuery( '#lesson-course-details #course-category-options' ).chosen(); }
-	if ( jQuery( '#course-woocommerce-product-options' ).exists() && '-' != jQuery( '#course-woocommerce-product-options' ).val() ) { jQuery( '#course-woocommerce-product-options' ).chosen(); }
+	if ( jQuery( '#lesson-complexity-options' ).exists() ) { jQuery( '#lesson-complexity-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#lesson-prerequisite-options' ).exists() ) { jQuery( '#lesson-prerequisite-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#lesson-course-options' ).exists() ) { jQuery( '#lesson-course-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#course-prerequisite-options' ).exists() ) { jQuery( '#course-prerequisite-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#lesson-course-details #course-category-options' ).exists() ) { jQuery( '#lesson-course-details #course-category-options' ).select2({width:"resolve"}); }
+    if ( jQuery( 'select#course-woocommerce-product-options' ).exists() ) { jQuery( 'select#course-woocommerce-product-options' ).select2({width:"resolve"}); }
 
 	// Quiz edit panel
-	if ( jQuery( '#add-question-type-options' ).exists() ) { jQuery( '#add-question-type-options' ).chosen(); }
-	if ( jQuery( '#add-question-category-options' ).exists() ) { jQuery( '#add-question-category-options' ).chosen(); }
-	if ( jQuery( '#add-multiple-question-options' ).exists() ) { jQuery( '#add-multiple-question-options' ).chosen(); }
+	if ( jQuery( '#add-question-type-options' ).exists() ) { jQuery( '#add-question-type-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#add-question-category-options' ).exists() ) { jQuery( '#add-question-category-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#add-multiple-question-options' ).exists() ) { jQuery( '#add-multiple-question-options' ).select2({width:"resolve"}); }
 
 	// Courses Write Panel
-	if ( jQuery( '#course-wc-product #course-woocommerce-product-options' ).exists() ) { jQuery( '#course-woocommerce-product-options' ).chosen(); }
-	if ( jQuery( '#add-multiple-question-category-options' ).exists() ) { jQuery( '#add-multiple-question-category-options' ).chosen(); }
+	if ( jQuery( '#course-wc-product #course-woocommerce-product-options' ).exists() ) { jQuery( '#course-woocommerce-product-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#add-multiple-question-category-options' ).exists() ) { jQuery( '#add-multiple-question-category-options' ).select2({width:"resolve"}); }
 
 	// Sensei Settings Panel
 	jQuery( 'div.woothemes-sensei-settings form select' ).each( function() {
 		if ( !jQuery( this ).hasClass( 'range-input' ) ) {
-			jQuery( this ).chosen();
+			jQuery( this ).select2({width:"resolve"});
 		} // End If Statement
 	});
 
@@ -647,8 +633,7 @@ jQuery(document).ready( function($) {
 	 						jQuery( '#lesson-course-actions' ).show();
 							jQuery( '#lesson-course-details' ).addClass( 'hidden' );
 							jQuery( '#lesson-course-options' ).append(jQuery( '<option></option>' ).attr( 'value' , response ).text(  jQuery( '#course-title' ).attr( 'value' ) ) );
-							jQuery( '#lesson-course-options' ).val( response );
-							jQuery( '#lesson-course-options' ).trigger( 'chosen:updated' );
+							jQuery( '#lesson-course-options' ).val( response).trigger("change");;
 	 					} else {
 	 						// TODO - course creation fail message
 	 					}
@@ -1313,7 +1298,7 @@ jQuery(document).ready( function($) {
 
 	jQuery( '#add-question-main' ).on( 'click', '.add_wrong_answer_option', function() {
 		var question_counter = jQuery( this ).attr( 'rel' );
-		var answer_count = jQuery( this ).closest( 'div.multiple-choice-answers' ).find( '.wrong_answer_count' ).text();
+		var answer_count = jQuery('input[name="question_wrong_answers[]"]').length-1;
 		answer_count++;
 		var html = '<label class="answer" for="question_' + question_counter + '_wrong_answer_' + answer_count + '"><span>' + woo_localized_data.wrong_colon + '</span> <input type="text" id="question_' + question_counter + '_wrong_answer_' + answer_count + '" name="question_wrong_answers[]" value="" size="25" class="question_answer widefat" /> <a class="remove_answer_option"></a></label>';
 		jQuery( this ).closest( 'div' ).before( html );
@@ -1321,7 +1306,7 @@ jQuery(document).ready( function($) {
 
 	jQuery( '#add-question-main' ).on( 'click', '.add_right_answer_option', function() {
 		var question_counter = jQuery( this ).attr( 'rel' );
-		var answer_count = jQuery( this ).closest( 'div.multiple-choice-answers' ).find( '.right_answer_count' ).text();
+		var answer_count = jQuery('input[name="question_right_answers[]"]').length-1;
 		answer_count++;
 		var html = '<label class="answer" for="question_' + question_counter + '_right_answer_' + answer_count + '"><span>' + woo_localized_data.right_colon + '</span> <input type="text" id="question_' + question_counter + '_right_answer_' + answer_count + '" name="question_right_answers[]" value="" size="25" class="question_answer widefat" /> <a class="remove_answer_option"></a></label>';
 		jQuery( this ).closest( 'div' ).before( html );
@@ -1415,26 +1400,26 @@ jQuery(document).ready( function($) {
 	 ***************************************************************************************************/
 
 	// Lessons Write Panel
-	if ( jQuery( '#lesson-complexity-options' ).exists() ) { jQuery( '#lesson-complexity-options' ).chosen(); }
-	if ( jQuery( '#lesson-prerequisite-options' ).exists() ) { jQuery( '#lesson-prerequisite-options' ).chosen(); }
-	if ( jQuery( '#lesson-course-options' ).exists() ) { jQuery( '#lesson-course-options' ).chosen(); }
-	if ( jQuery( '#course-prerequisite-options' ).exists() ) { jQuery( '#course-prerequisite-options' ).chosen(); }
-	if ( jQuery( '#course-category-options' ).exists() ) { jQuery( '#course-category-options' ).chosen(); }
-	if ( jQuery( '#course-woocommerce-product-options' ).exists() && '-' != jQuery( '#course-woocommerce-product-options' ).val() ) { jQuery( '#course-woocommerce-product-options' ).chosen(); }
+	if ( jQuery( '#lesson-complexity-options' ).exists() ) { jQuery( '#lesson-complexity-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#lesson-prerequisite-options' ).exists() ) { jQuery( '#lesson-prerequisite-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#lesson-course-options' ).exists() ) { jQuery( '#lesson-course-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#course-prerequisite-options' ).exists() ) { jQuery( '#course-prerequisite-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#course-category-options' ).exists() ) { jQuery( '#course-category-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#course-woocommerce-product-options' ).exists() && '-' != jQuery( '#course-woocommerce-product-options' ).val() ) { jQuery( '#course-woocommerce-product-options' ).select2({width:"resolve"}); }
 
 	// Quiz edit panel
-	if ( jQuery( '#add-question-type-options' ).exists() ) { jQuery( '#add-question-type-options' ).chosen(); }
-	if ( jQuery( '#add-question-category-options' ).exists() ) { jQuery( '#add-question-category-options' ).chosen(); }
-	if ( jQuery( '#add-multiple-question-options' ).exists() ) { jQuery( '#add-multiple-question-options' ).chosen(); }
+	if ( jQuery( '#add-question-type-options' ).exists() ) { jQuery( '#add-question-type-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#add-question-category-options' ).exists() ) { jQuery( '#add-question-category-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#add-multiple-question-options' ).exists() ) { jQuery( '#add-multiple-question-options' ).select2({width:"resolve"}); }
 
 	// Courses Write Panel
-	if ( jQuery( 'select#course-woocommerce-product-options' ).exists() ) { jQuery( 'select#course-woocommerce-product-options' ).chosen(); }
-	if ( jQuery( '#add-multiple-question-category-options' ).exists() ) { jQuery( '#add-multiple-question-category-options' ).chosen(); }
+	if ( jQuery( 'select#course-woocommerce-product-options' ).exists() ) { jQuery( 'select#course-woocommerce-product-options' ).select2({width:"resolve"}); }
+	if ( jQuery( '#add-multiple-question-category-options' ).exists() ) { jQuery( '#add-multiple-question-category-options' ).select2({width:"resolve"}); }
 
 	// Sensei Settings Panel
 	jQuery( 'div.woothemes-sensei-settings form select' ).each( function() {
 		if ( !jQuery( this ).hasClass( 'range-input' ) ) {
-			jQuery( this ).chosen();
+			jQuery( this).select2({width:"resolve"});;
 		} // End If Statement
 	});
 

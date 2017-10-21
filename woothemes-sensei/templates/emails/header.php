@@ -10,29 +10,29 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // Get data for email content
-global $woothemes_sensei, $sensei_email_data;
+global $sensei_email_data;
 extract( $sensei_email_data );
 
 // Load colours
 $bg = '#f5f5f5';
-if( isset( $woothemes_sensei->settings->settings['email_background_color'] ) && '' != $woothemes_sensei->settings->settings['email_background_color'] ) {
-	$bg = $woothemes_sensei->settings->settings['email_background_color'];
+if( isset( Sensei()->settings->settings['email_background_color'] ) && '' != Sensei()->settings->settings['email_background_color'] ) {
+	$bg = Sensei()->settings->settings['email_background_color'];
 }
 
 $body = '#fdfdfd';
-if( isset( $woothemes_sensei->settings->settings['email_body_background_color'] ) && '' != $woothemes_sensei->settings->settings['email_body_background_color'] ) {
-	$body = $woothemes_sensei->settings->settings['email_body_background_color'];
+if( isset( Sensei()->settings->settings['email_body_background_color'] ) && '' != Sensei()->settings->settings['email_body_background_color'] ) {
+	$body = Sensei()->settings->settings['email_body_background_color'];
 }
 
 $base = '#557da1';
-if( isset( $woothemes_sensei->settings->settings['email_base_color'] ) && '' != $woothemes_sensei->settings->settings['email_base_color'] ) {
-	$base = $woothemes_sensei->settings->settings['email_base_color'];
+if( isset( Sensei()->settings->settings['email_base_color'] ) && '' != Sensei()->settings->settings['email_base_color'] ) {
+	$base = Sensei()->settings->settings['email_base_color'];
 }
 $base_text 	= sensei_light_or_dark( $base, '#202020', '#ffffff' );
 
 $text = '#505050';
-if( isset( $woothemes_sensei->settings->settings['email_text_color'] ) && '' != $woothemes_sensei->settings->settings['email_text_color'] ) {
-	$text = $woothemes_sensei->settings->settings['email_text_color'];
+if( isset( Sensei()->settings->settings['email_text_color'] ) && '' != Sensei()->settings->settings['email_text_color'] ) {
+	$text = Sensei()->settings->settings['email_text_color'];
 }
 
 $bg_darker_10 = sensei_hex_darker( $bg, 10 );
@@ -106,21 +106,20 @@ $header_content_h1 = "
         	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
             	<tr>
                 	<td align="center" valign="top">
-                		  	<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_container" style="<?php echo $template_container; ?>">
+                		<?php
+                			if ( isset( Sensei()->settings->settings['email_header_image'] ) && '' != Sensei()->settings->settings['email_header_image'] ) {
+                				$img = Sensei()->settings->settings['email_header_image'];
+                				echo '<p style="margin-top:0;"><img src="' . esc_url( $img ) . '" alt="' . get_bloginfo( 'name' ) . '" /></p>';
+                			}
+                		?>
+                    	<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_container" style="<?php echo $template_container; ?>">
                         	<tr>
                             	<td align="center" valign="top">
                                     <!-- Header -->
-                                	<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_header" style="<?php echo $template_header; ?>">
+                                	<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_header" style="<?php echo $template_header; ?>" bgcolor="<?php echo $base; ?>">
                                         <tr>
-                                            <td align="center">
-                                            <div style="padding:20px 0 0px;border-bottom:3px solid #000; background:#c3c3c3;">
-	                		<?php
-                			if ( isset( $woothemes_sensei->settings->settings['email_header_image'] ) && '' != $woothemes_sensei->settings->settings['email_header_image'] ) {
-                				$img = $woothemes_sensei->settings->settings['email_header_image'];
-                				echo '<p style="margin-top:0;"><img src="' . esc_url( $img ) . '" alt="' . get_bloginfo( 'name' ) . '" /></p>';
-                			}
-                		?>					</div>
-                                            	
+                                            <td>
+                                            	<h1 style="<?php echo $header_content_h1; ?>"><?php echo $heading; ?></h1>
 
                                             </td>
                                         </tr>
@@ -133,7 +132,7 @@ $header_content_h1 = "
                                     <!-- Body -->
                                 	<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_body">
                                     	<tr>
-                                            <td valign="top" style="background:#c3c3c3;"">
+                                            <td valign="top" style="<?php echo $body_content; ?>">
                                                 <!-- Content -->
                                                 <table border="0" cellpadding="20" cellspacing="0" width="100%">
                                                     <tr>
